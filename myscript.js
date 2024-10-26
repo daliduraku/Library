@@ -52,3 +52,19 @@ document.querySelector('form').addEventListener('submit', function(event){
 
 })
 
+function displayObjectAsCard(obj){
+    // creating the card element
+    const card = document.createdElement('div');
+    card.classList.add('card')
+
+    //add the objects properties to the card
+    for (const key in obj) {
+        const propertyDiv = document.createElement('div');
+        propertyDiv.innerHTML = `<strong>${key}:</strong> ${obj[key]}`;
+        card.appendChild(propertyDiv);
+    }
+
+    // append the card to our document
+    document.body.appendChild(card);
+}
+
