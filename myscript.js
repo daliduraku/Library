@@ -3,6 +3,7 @@ const  myLibrary = [];
 
 class Book {
     constructor(author, title, pages, read) {
+        this.bookId = `book${++Book.id}`;
         this.author = author; //string
         this.title = title; //string
         this.pages = pages; //num
@@ -10,6 +11,9 @@ class Book {
         
     }
 }
+
+//static property
+Book.id = 0;
 
 function addBookToLibrary(author, title, pages, read) {
      // creating a new object
