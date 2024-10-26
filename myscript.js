@@ -13,9 +13,21 @@ class Book {
 }
 
 const button = document.getElementById("showFormBtn");
-const form = document.getElementById("myForm");
-
+const form = document.getElementById("myform");
 
 button.addEventListener("click", function(){
+    const formDisplay = window.getComputedStyle(form).display;
+
+    if (formDisplay === "none"){
+        form.style.display = "block";
+    }else {
+        form.style.display = "none";
+    }
+});
+
+const submitButton = document.getElementById("submitBtn")
+
+submitButton.addEventListener("click", function(event){
+    event.preventDefault();
     
 })
