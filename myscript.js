@@ -13,10 +13,13 @@ class Book {
 
 function addBookToLibrary(author, title, pages, read) {
      // creating a new object
-     let book = new Book(author, title, pages, read);
+     const newBook = new Book(author, title, pages, read);
 
      // pushing the new book in the array of objects
-     myLibrary.push(book);
+     myLibrary.push(newBook);
+
+    // display the book
+    displayObjectAsCard(newBook);
 }
 
 const button = document.getElementById("showFormBtn");
@@ -48,13 +51,16 @@ document.querySelector('form').addEventListener('submit', function(event){
     const read = formData.has('read') ? "The book was read" : "The book was not read";
     
     // calling function to create a new book and add to the library 
-    addBookToLibrary(author, title, pages, readString);
+    addBookToLibrary(author, title, pages, read);
 
-})
+    // clear the form for another submission
+    document.getElementById('myform').reset();
+
+});
 
 function displayObjectAsCard(obj){
     // creating the card element
-    const card = document.createdElement('div');
+    const card = document.createElement('div');
     card.classList.add('card')
 
     //add the objects properties to the card
@@ -65,6 +71,9 @@ function displayObjectAsCard(obj){
     }
 
     // append the card to our document
-    document.body.appendChild(card);
+    document.getElementById('cardContainer').appendChild(card);
 }
 
+function displayLibraryAsCards(library) {
+    library.forEach(book => displayObjectAsCard(book));
+}
