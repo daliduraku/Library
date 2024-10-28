@@ -52,8 +52,9 @@ document.querySelector('form').addEventListener('submit', function(event){
     const author = formData.get('author');
     const title = formData.get('title');
     const pages = formData.get('pages'); 
-    const read = formData.has('read') ? "The book was read" : "The book was not read";
+    //const read = formData.has('read') ? "The book was read" : "The book was not read";
     
+    const read = document.getElementById('read').checked ? "The book was read" : "The book was not read";
     // calling function to create a new book and add to the library 
     addBookToLibrary(author, title, pages, read);
 
@@ -73,6 +74,22 @@ function displayObjectAsCard(obj){
         propertyDiv.innerHTML = `<strong>${key}:</strong> ${obj[key]}`;
         card.appendChild(propertyDiv);
     }
+
+    // creating a label for the checkbox
+    const label = document.createElement('label');
+    label.setAttribute('for', 'read');
+    label.textContent = 'Did you read the book?:';
+
+    // create the checkbox input
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = 'read';
+    checkbox.name = 'read';
+
+    // append the label and checkbox to the card
+    card.appendChild(label);
+    card.appendChild(checkbox);
+
 
     // append the card to our document
     document.getElementById('cardContainer').appendChild(card);
