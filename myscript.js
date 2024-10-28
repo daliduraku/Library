@@ -63,6 +63,7 @@ document.querySelector('form').addEventListener('submit', function(event){
 
 });
 
+// display each book as a card
 function displayObjectAsCard(obj){
     // creating the card element
     const card = document.createElement('div');
@@ -86,15 +87,15 @@ function displayObjectAsCard(obj){
     checkbox.id = 'read';
     checkbox.name = 'read';
 
+    // append the label and checkbox to the card
+    card.appendChild(label);
+    card.appendChild(checkbox);
+
     //create a remove button
     const remBtn = document.createElement('button');
     card.appendChild(remBtn);
     remBtn.textContent = 'Remove';
     remBtn.onclick = remBook;
-
-    // append the label and checkbox to the card
-    card.appendChild(label);
-    card.appendChild(checkbox);
 
 
     // append the card to our document
@@ -105,6 +106,7 @@ function displayLibraryAsCards(library) {
     library.forEach(book => displayObjectAsCard(book));
 }
 
+// remove book function
 function remBook() {
     const bookId = this.parentElement.classList[0];
 
