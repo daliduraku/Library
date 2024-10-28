@@ -3,6 +3,10 @@
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 #showFormBtn {
@@ -29,4 +33,7 @@
 form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
