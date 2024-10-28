@@ -86,6 +86,12 @@ function displayObjectAsCard(obj){
     checkbox.id = 'read';
     checkbox.name = 'read';
 
+    //create a remove button
+    const remBtn = document.createElement('button');
+    card.appendChild(remBtn);
+    remBtn.textContent = 'Remove';
+    remBtn.onclick = remBook;
+
     // append the label and checkbox to the card
     card.appendChild(label);
     card.appendChild(checkbox);
@@ -97,4 +103,14 @@ function displayObjectAsCard(obj){
 
 function displayLibraryAsCards(library) {
     library.forEach(book => displayObjectAsCard(book));
+}
+
+function remBook() {
+    const bookId = this.parentElement.classList[0];
+
+    const findBook = myLibrary.findIndex(
+        (element) => element.bookId === bookId
+    );
+    const delBook = myLibrary.splice(findBook, 0);
+    this.parentElement.remove();
 }
